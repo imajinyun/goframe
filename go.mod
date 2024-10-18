@@ -1,6 +1,6 @@
 module github.com/imajinyun/goframe
 
-go 1.22.1
+go 1.23.0
 
 require (
 	github.com/bytedance/sonic v1.11.3
