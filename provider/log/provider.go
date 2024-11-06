@@ -5,7 +5,6 @@ import (
 	"strings"
 
 	"github.com/imajinyun/goframe"
-
 	"github.com/imajinyun/goframe/contract"
 	"github.com/imajinyun/goframe/provider/log/formatter"
 	"github.com/imajinyun/goframe/provider/log/services"

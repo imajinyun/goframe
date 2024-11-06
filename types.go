@@ -6,6 +6,16 @@ import (
 	"sync"
 )
 
+type Handler func(...any) (any, error)
+
+type IProvider interface {
+	Name() string
+	Boot(IContainer) error
+	Params(IContainer) []any
+	Inject(IContainer) Handler
+	IsDefer() bool
+}
+
 type IContainer interface {
 	Bind(provider IProvider) error
 	IsBind(key string) bool
