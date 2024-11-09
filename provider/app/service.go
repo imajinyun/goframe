@@ -6,9 +6,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/imajinyun/goframe"
-
 	"github.com/google/uuid"
+
+	"github.com/imajinyun/goframe"
 )
 
 var errAppServiceParams = errors.New("app service params error")
@@ -92,7 +92,7 @@ func (s *AppService) RunDir() string {
 		return val
 	}
 
-	return filepath.Join(s.StorageDir(), "run")
+	return filepath.Join(s.TmpDir(), "run")
 }
 
 func (s *AppService) HttpDir() string {
@@ -149,13 +149,13 @@ func (s *AppService) MiddlewareDir() string {
 	return filepath.Join(s.HttpDir(), "middleware")
 }
 
-func (s *AppService) StorageDir() string {
-	val := s.getValueByKey("storage_dir", "STORAGE_DIR", "app.path.storage_dir")
+func (s *AppService) TmpDir() string {
+	val := s.getValueByKey("tmp_dir", "TMP_DIR", "app.path.tmp_dir")
 	if val != "" {
 		return val
 	}
 
-	return filepath.Join(s.WorkDir(), "storage")
+	return filepath.Join(s.WorkDir(), "tmp")
 }
 
 func (s *AppService) DeployDir() string {

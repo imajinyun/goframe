@@ -8,7 +8,7 @@ import (
 type DcsProvider struct{}
 
 func (p *DcsProvider) Name() string {
-	return contract.DistributedKey
+	return contract.DcsKey
 }
 
 func (p *DcsProvider) Boot(container goframe.IContainer) error {

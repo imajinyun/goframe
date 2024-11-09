@@ -9,7 +9,7 @@ import (
 	"github.com/imajinyun/goframe/contract"
 )
 
-func (c *Command) AddDistributedCronCommand(name string, spec string, cmd *Command, hold time.Duration) {
+func (c *Command) AddDcsCronCommand(name string, spec string, cmd *Command, hold time.Duration) {
 	root := c.Root()
 
 	if root.Cron == nil {
@@ -26,7 +26,7 @@ func (c *Command) AddDistributedCronCommand(name string, spec string, cmd *Comma
 	})
 
 	appsvc := root.GetContainer().MustMake(contract.AppKey).(contract.IApp)
-	dstsvc := root.GetContainer().MustMake(contract.DistributedKey).(contract.IDistributed)
+	dstsvc := root.GetContainer().MustMake(contract.DcsKey).(contract.IDcs)
 	appid := appsvc.AppID()
 
 	var cronCmd Command

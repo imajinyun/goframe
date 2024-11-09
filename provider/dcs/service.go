@@ -31,7 +31,7 @@ func NewDcsService(params ...any) (any, error) {
 func (s *DcsService) Select(name string, id string, hold time.Duration) (string, error) {
 	appsvc := s.container.MustMake(contract.AppKey).(contract.IApp)
 	dir := appsvc.RunDir()
-	file := filepath.Join(dir, "distributed_"+name)
+	file := filepath.Join(dir, "dcs_"+name)
 
 	lock, err := os.OpenFile(file, os.O_RDWR|os.O_CREATE, 0o666)
 	if err != nil {
