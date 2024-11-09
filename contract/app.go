@@ -13,7 +13,7 @@ type IApp interface {
 	WorkDir() string
 	HttpDir() string
 	TestDir() string
-	StorageDir() string
+	TmpDir() string
 	ProviderDir() string
 	DeployDir() string
 	MiddlewareDir() string

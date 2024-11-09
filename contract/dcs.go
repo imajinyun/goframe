@@ -2,8 +2,8 @@ package contract
 
 import "time"
 
-const DistributedKey = "gogin:distributed"
+const DcsKey = "gogin:dcs"
 
-type IDistributed interface {
+type IDcs interface {
 	Select(name string, id string, hold time.Duration) (string, error)
 }
