@@ -1,4 +1,4 @@
-package distributed
+package dcs
 
 import (
 	"errors"
@@ -9,27 +9,26 @@ import (
 	"time"
 
 	"github.com/imajinyun/goframe"
-
 	"github.com/imajinyun/goframe/contract"
 )
 
-var errDistributedServiceParams = errors.New("distributed service params error")
+var errDcsServiceParams = errors.New("distributed service params error")
 
-type DistributedService struct {
+type DcsService struct {
 	container goframe.IContainer
 }
 
-func NewDistributedService(params ...any) (any, error) {
+func NewDcsService(params ...any) (any, error) {
 	if len(params) != 1 {
-		return nil, errDistributedServiceParams
+		return nil, errDcsServiceParams
 	}
 
 	container := params[0].(goframe.IContainer)
 
-	return &DistributedService{container: container}, nil
+	return &DcsService{container: container}, nil
 }
 
-func (s *DistributedService) Select(name string, id string, hold time.Duration) (string, error) {
+func (s *DcsService) Select(name string, id string, hold time.Duration) (string, error) {
 	appsvc := s.container.MustMake(contract.AppKey).(contract.IApp)
 	dir := appsvc.RunDir()
 	file := filepath.Join(dir, "distributed_"+name)
